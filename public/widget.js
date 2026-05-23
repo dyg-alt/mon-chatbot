@@ -4,7 +4,7 @@
   btn.style.cssText = 'position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:#007bff;color:white;border:none;cursor:pointer;font-size:24px;z-index:999;box-shadow:0 4px 6px rgba(0,0,0,0.2);transition:0.3s;';
   
   const panel = document.createElement('div');
-  panel.style.cssText = 'position:fixed;right:0;top:0;width:0;height:100%;background:white;box-shadow:-2px 0 10px rgba(0,0,0,0.2);z-index:998;transition:width 0.3s;overflow:hidden;';
+  panel.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;background:white;box-shadow:-2px 0 10px rgba(0,0,0,0.2);z-index:998;transition:width 0.3s,height 0.3s;overflow:hidden;border-radius:12px 12px 0 0;';
   
   const closeBtn = document.createElement('button');
   closeBtn.innerHTML = '✕';
@@ -21,12 +21,19 @@
   
   btn.onclick = () => {
     isOpen = !isOpen;
-    panel.style.width = isOpen ? '400px' : '0';
+    if(isOpen) {
+      panel.style.width = '380px';
+      panel.style.height = '600px';
+    } else {
+      panel.style.width = '0';
+      panel.style.height = '0';
+    }
   };
   
   closeBtn.onclick = () => {
     isOpen = false;
     panel.style.width = '0';
+    panel.style.height = '0';
   };
   
   document.body.appendChild(btn);

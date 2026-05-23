@@ -52,16 +52,9 @@ export default function Home() {
     <div className="flex flex-col h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       {/* Header */}
       <div className="bg-white border-b border-slate-200 p-4 shadow-sm">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
-            <span className="text-white font-bold text-lg">💬</span>
-          </div>
-          <div>
-            <h1 className="font-bold text-gray-900">DYG Assistant</h1>
-            <p className="text-xs text-gray-500">Toujours disponible</p>
-          </div>
-        </div>
-      </div>
+  <h1 className="font-bold text-gray-900 text-xl">DYG</h1>
+  <p className="text-xs text-gray-500">Assistant IA</p>
+</div>
 
       {/* Messages Container */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
