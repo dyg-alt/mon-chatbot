@@ -1,13 +1,10 @@
 (function() {
   const btn = document.createElement('button');
   btn.innerHTML = '💬';
-  btn.style.cssText = 'position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:#007bff;color:white;border:none;cursor:pointer;font-size:24px;z-index:999;box-shadow:0 4px 6px rgba(0,0,0,0.2);';
+  btn.style.cssText = 'position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:#007bff;color:white;border:none;cursor:pointer;font-size:24px;z-index:999;box-shadow:0 4px 6px rgba(0,0,0,0.2);transition:0.3s;';
   
-  const modal = document.createElement('div');
-  modal.style.cssText = 'display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;';
-  
-  const container = document.createElement('div');
-  container.style.cssText = 'position:relative;width:500px;height:700px;margin:50px auto;background:white;border-radius:10px;overflow:hidden;';
+  const panel = document.createElement('div');
+  panel.style.cssText = 'position:fixed;right:0;top:0;width:0;height:100%;background:white;box-shadow:-2px 0 10px rgba(0,0,0,0.2);z-index:998;transition:width 0.3s;overflow:hidden;';
   
   const closeBtn = document.createElement('button');
   closeBtn.innerHTML = '✕';
@@ -17,14 +14,21 @@
   iframe.src = 'https://mon-chatbot-six.vercel.app/';
   iframe.style.cssText = 'width:100%;height:100%;border:none;';
   
-  container.appendChild(closeBtn);
-  container.appendChild(iframe);
-  modal.appendChild(container);
+  panel.appendChild(closeBtn);
+  panel.appendChild(iframe);
   
-  btn.onclick = () => modal.style.display = 'flex';
-  closeBtn.onclick = () => modal.style.display = 'none';
-  modal.onclick = (e) => e.target === modal && (modal.style.display = 'none');
+  let isOpen = false;
+  
+  btn.onclick = () => {
+    isOpen = !isOpen;
+    panel.style.width = isOpen ? '400px' : '0';
+  };
+  
+  closeBtn.onclick = () => {
+    isOpen = false;
+    panel.style.width = '0';
+  };
   
   document.body.appendChild(btn);
-  document.body.appendChild(modal);
+  document.body.appendChild(panel);
 })();
