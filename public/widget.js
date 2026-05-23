@@ -24,9 +24,13 @@
     if(isOpen) {
       panel.style.width = '380px';
       panel.style.height = '600px';
+      btn.style.opacity = '0';
+      btn.style.pointerEvents = 'none';
     } else {
       panel.style.width = '0';
       panel.style.height = '0';
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
     }
   };
   
@@ -34,6 +38,8 @@
     isOpen = false;
     panel.style.width = '0';
     panel.style.height = '0';
+    btn.style.opacity = '1';
+    btn.style.pointerEvents = 'auto';
   };
   
   document.body.appendChild(btn);
