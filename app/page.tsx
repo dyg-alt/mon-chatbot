@@ -126,7 +126,7 @@ export default function Home() {
             onKeyPress={(e) => e.key === "Enter" && sendMessage()}
             placeholder="Tapez votre question..."
             disabled={loading}
-            className="flex-1 px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 text-sm"
+            className="flex-1 px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 text-gray-900 text-sm"
           />
           <button
             onClick={sendMessage}
