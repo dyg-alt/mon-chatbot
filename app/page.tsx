@@ -136,9 +136,6 @@ export default function Home() {
             {loading ? "..." : "Envoyer"}
           </button>
         </div>
-        <p className="text-xs text-gray-500 mt-2">
-          Alimenté par IA • Réponses instantanées
-        </p>
         <p className="text-xs text-gray-500 mt-2 text-center">
           Ceci est un assistant IA. Les réponses peuvent contenir des erreurs. Veuillez vérifier les réponses.
         </p>
