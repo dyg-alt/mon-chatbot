@@ -1,0 +1,47 @@
+# =====================================================================
+# Configuration du trend-bot (tous les paramètres sont modifiables ici)
+# Les pourcentages sont exprimés en fractions : 0.001 = 0,1 %
+# =====================================================================
+
+capital_initial: 100000          # Capital de départ en USD
+
+univers: [SPY, QQQ, EWL, EEM, GLD, TLT, IWM, EFA]
+benchmark: SPY                   # Actif de comparaison (achat-conservation)
+
+# --- Coûts d'exécution ---
+frais_ordre: 0.001               # 0,1 % du montant de chaque ordre (achat et vente)
+slippage: 0.0005                 # 0,05 % de glissement défavorable sur le prix
+
+# --- Gestion du risque ---
+risque_par_trade: 0.01           # 1 % du capital actuel risqué par trade
+max_positions: 5                 # Nombre maximum de positions ouvertes
+max_position_pct: 0.25           # Maximum 25 % du capital dans une seule position
+
+# --- Paramètres de la stratégie (timeframe journalier) ---
+strategie:
+  sma_filtre: 200                # Filtre de tendance : clôture > moyenne mobile 200 j
+  breakout: 20                   # Entrée : clôture > plus haut des 20 derniers jours
+  atr_periode: 14                # Période de l'ATR
+  stop_initial_atr: 2.0          # Stop initial = prix d'entrée - 2 x ATR
+  stop_suiveur_atr: 3.0          # Stop suiveur = plus haut depuis l'entrée - 3 x ATR
+  momentum_jours: 63             # ~3 mois de bourse, sert à départager les signaux
+
+# --- Périodes de test ---
+periodes:
+  entrainement: {debut: "2015-01-01", fin: "2022-12-31"}
+  validation:   {debut: "2023-01-01", fin: null}   # null = jusqu'à aujourd'hui
+
+# --- Données ---
+donnees:
+  debut_historique: "2013-06-01" # Historique téléchargé (sert à chauffer la SMA 200)
+  dossier_cache: "data_cache"
+  age_max_heures: 12             # Au-delà, le cache est rafraîchi depuis yfinance
+  tentatives: 3                  # Nombre d'essais de téléchargement par actif
+
+# --- Fichiers de sortie ---
+sortie:
+  dossier: "output"
+  etat_portefeuille: "output/etat_portefeuille.json"   # état du paper trading
+  journal_paper: "output/journal_paper.csv"            # trades du paper trading
+  resultats_backtest: "output/resultats_backtest.json"
+  dashboard: "output/dashboard.html"
